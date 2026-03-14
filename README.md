@@ -176,7 +176,7 @@ Savings:      ~57-77% cost reduction
 ## 🤝 Contributing
 
 ```bash
-git clone https://github.com/soplex-ai/soplex
+git clone https://github.com/pratikbhande/soplex
 cd soplex
 python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows
@@ -191,6 +191,6 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ## 🔗 Links
 
 - [Documentation](https://soplex.dev/docs)
-- [Examples](https://github.com/soplex-ai/soplex/tree/main/examples)
-- [PyPI Package](https://pypi.org/project/soplex/)
-- [Issues](https://github.com/soplex-ai/soplex/issues)
+- [Examples](https://github.com/pratikbhande/soplex/tree/main/examples)
+- [PyPI Package](https://pypi.org/project/soplex-ai/)
+- [Issues](https://github.com/pratikbhande/soplex/issues)

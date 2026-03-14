@@ -176,8 +176,8 @@ class SOPDefinition(BaseModel):
         cost_per_1m_tokens = pricing.get('gpt-4o-mini', {}).get('input', 0.15)
         llm_cost = (estimated_tokens / 1_000_000) * cost_per_1m_tokens
 
-        # CODE steps are essentially free
-        code_cost = 0.0001 * (self.code_steps + self.branch_steps + (self.hybrid_steps * 0.4))
+        # CODE steps are essentially free (much cheaper than LLM calls)
+        code_cost = 0.000001 * (self.code_steps + self.branch_steps + (self.hybrid_steps * 0.4))
 
         total_cost = llm_cost + code_cost
 
