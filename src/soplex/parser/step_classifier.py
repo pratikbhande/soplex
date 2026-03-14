@@ -21,7 +21,7 @@ class StepClassifier:
         "validate", "verify", "search", "find", "get", "set", "store", "save",
         "load", "read", "write", "execute", "run", "perform", "trigger",
         "invoke", "submit", "post", "put", "patch", "remove", "create",
-        "generate", "parse", "format", "transform", "convert", "filter"
+        "generate", "parse", "format", "transform", "convert", "filter", "process"
     }
 
     # Context-specific CODE patterns (only match with specific context)
@@ -50,7 +50,8 @@ class StepClassifier:
     ESCALATE_KEYWORDS = {
         "escalate", "hand off", "transfer to human", "flag for review",
         "contact supervisor", "alert manager", "require approval",
-        "manual review", "human intervention", "specialist review"
+        "manual review", "human intervention", "specialist review",
+        "contact manager", "authorization"
     }
 
     # Keywords that indicate END
@@ -99,13 +100,23 @@ class StepClassifier:
 
         # Check for END keywords first
         for keyword in cls.END_KEYWORDS:
-            if keyword in text_lower:
+            if re.search(r'\b' + re.escape(keyword) + r'\b', text_lower):
                 keywords_found.append(keyword)
                 return StepType.END, keywords_found, 1.0
 
-        # Check for ESCALATE keywords
+        # Check for conditional if-then patterns, but check if the action is explicit escalation first
+        if re.search(r'\bif\b.*\b(then|,|require|proceed)', text_lower):
+            # If the conditional leads to explicit escalation (not just "require approval")
+            explicit_escalate_keywords = {"escalate", "hand off", "transfer to human", "flag for review",
+                                        "contact supervisor", "alert manager", "manual review",
+                                        "human intervention", "specialist review", "contact manager"}
+            if any(keyword in text_lower for keyword in explicit_escalate_keywords):
+                return StepType.ESCALATE, ['conditional-escalate'], 1.0
+            return StepType.BRANCH, ['if-then-pattern'], 1.0
+
+        # Check for ESCALATE keywords (after conditional patterns)
         for keyword in cls.ESCALATE_KEYWORDS:
-            if keyword in text_lower:
+            if re.search(r'\b' + re.escape(keyword) + r'\b', text_lower):
                 keywords_found.append(keyword)
                 return StepType.ESCALATE, keywords_found, 1.0
 
@@ -116,11 +127,11 @@ class StepClassifier:
 
         # Check for BRANCH patterns (conditional logic)
         for keyword in cls.BRANCH_KEYWORDS:
-            if keyword in text_lower:
-                keywords_found.append(keyword)
+            if re.search(r'\b' + re.escape(keyword) + r'\b', text_lower):
+                keywords_found.append(f"branch:{keyword}")
                 branch_score += 1
 
-        # Special check for CHECK: pattern which always indicates BRANCH
+        # Special patterns that always indicate BRANCH
         if re.search(r'\bcheck:', text_lower) or text_lower.startswith('check:'):
             return StepType.BRANCH, ['check:'], 1.0
 
@@ -140,6 +151,21 @@ class StepClassifier:
 
         for keyword in cls.CODE_KEYWORDS:
             if re.search(r'\b' + re.escape(keyword) + r'\b', text_lower):
+                # Special handling for "process" - only count as CODE if it has clear context
+                if keyword == "process":
+                    # Check if it has specific business context for data processing
+                    data_context_patterns = [r'process\s+(?:payment|refund|order|transaction|data|request)',
+                                           r'process\s+the\s+(?:payment|refund|order|transaction)']
+                    has_data_context = any(re.search(pattern, text_lower) for pattern in data_context_patterns)
+
+                    # Check if it's used in explanatory/conversational context
+                    explanation_patterns = [r'(?:explain|describe|tell|inform).*process',
+                                          r'process.*(?:explanation|description)']
+                    has_explanation_context = any(re.search(pattern, text_lower) for pattern in explanation_patterns)
+
+                    if has_explanation_context or (not has_data_context and len(text_lower.split()) <= 4):
+                        continue  # Skip counting this as a CODE keyword
+
                 code_score += 1
                 keywords_found.append(f"code:{keyword}")
 
@@ -159,8 +185,21 @@ class StepClassifier:
 
         # HYBRID: Has both LLM and CODE keywords
         if code_score > 0 and llm_score > 0:
-            confidence = min(0.9, (code_score + llm_score) * 0.3)
-            return StepType.HYBRID, keywords_found, confidence
+            # Only classify as pure LLM if it's HEAVILY weighted toward conversation
+            # and has specific explanation keywords without data manipulation
+            strong_llm_keywords = {"explain", "describe", "tell", "clarify"}
+            has_strong_llm = any(keyword in text_lower for keyword in strong_llm_keywords)
+            strong_code_keywords = {"update", "save", "store", "create", "delete", "process"}
+            has_strong_code = any(keyword in text_lower for keyword in strong_code_keywords)
+
+            # If it has strong code keywords, always prefer HYBRID over pure LLM
+            if has_strong_code or not has_strong_llm or llm_score < code_score * 2:
+                confidence = min(0.9, (code_score + llm_score) * 0.3)
+                return StepType.HYBRID, keywords_found, confidence
+
+            # Only pure LLM if very conversation-heavy
+            confidence = min(0.95, 0.7 + (llm_score * 0.1))
+            return StepType.LLM, keywords_found, confidence
 
         # Pure CODE: Only CODE keywords
         if code_score > 0:

@@ -3,8 +3,8 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "soplex"
-version = "0.1.0"
+name = "soplex-ai"
+version = "0.1.1"
 description = "Compile plain-English SOPs into executable, cost-optimized agent graphs"
 authors = [
     {name = "soplex", email = "info@soplex.dev"}
@@ -54,8 +54,8 @@ dev = [
 soplex = "soplex.cli:app"
 
 [project.urls]
-Documentation = "https://github.com/soplex-ai/soplex"
-Repository = "https://github.com/soplex-ai/soplex"
+Documentation = "https://github.com/pratikbhande/soplex"
+Repository = "https://github.com/pratikbhande/soplex"
 Homepage = "https://soplex.dev"
 
 [tool.hatch.build.targets.sdist]
