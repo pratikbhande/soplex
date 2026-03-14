@@ -1,0 +1,1 @@
+# Visualizer module for soplex

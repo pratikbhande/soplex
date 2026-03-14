@@ -1,0 +1,192 @@
+# Mock tool definitions for soplex examples
+# These provide predefined responses for testing and development
+
+order_db:
+  description: "Database lookup for order information"
+  parameters:
+    order_number:
+      type: string
+      description: "Order number to lookup"
+  mock_responses:
+    default:
+      order_id: "ORD-12345"
+      customer_email: "customer@example.com"
+      order_date: "2024-02-15"
+      status: "delivered"
+      total: 89.99
+      items: ["Widget A", "Widget B"]
+      shipping: 5.99
+    recent_order:
+      order_id: "ORD-67890"
+      customer_email: "recent@example.com"
+      order_date: "2024-03-10"
+      status: "delivered"
+      total: 45.50
+      items: ["Gadget X"]
+      shipping: 0.00
+
+payments_api:
+  description: "Process refunds and payments"
+  parameters:
+    action:
+      type: string
+      description: "Action to perform (refund, charge, etc.)"
+    amount:
+      type: number
+      description: "Amount in currency units"
+    reference:
+      type: string
+      description: "Order or transaction reference"
+  mock_responses:
+    refund_success:
+      status: "success"
+      refund_id: "REF-98765"
+      amount_refunded: 84.00
+      processing_time: "3-5 business days"
+    refund_failed:
+      status: "failed"
+      error: "Payment method expired"
+
+identity_check:
+  description: "Verify customer identity"
+  parameters:
+    email:
+      type: string
+      description: "Customer email to verify"
+    order_number:
+      type: string
+      description: "Order number for verification"
+  mock_responses:
+    verified:
+      status: "verified"
+      confidence: 0.95
+      match_details: ["email", "billing_address"]
+    failed:
+      status: "failed"
+      reason: "Email does not match order records"
+
+account_db:
+  description: "User account database lookup"
+  parameters:
+    identifier:
+      type: string
+      description: "Email or username to lookup"
+  mock_responses:
+    active_account:
+      user_id: "USR-456"
+      email: "user@example.com"
+      username: "testuser"
+      status: "active"
+      created_date: "2023-01-15"
+      last_login: "2024-03-13"
+    locked_account:
+      user_id: "USR-789"
+      email: "locked@example.com"
+      username: "lockeduser"
+      status: "locked"
+      lock_reason: "Multiple failed login attempts"
+    not_found:
+      error: "No account found with that identifier"
+
+email_service:
+  description: "Send emails to users"
+  parameters:
+    to_email:
+      type: string
+      description: "Recipient email address"
+    template:
+      type: string
+      description: "Email template to use"
+    variables:
+      type: object
+      description: "Template variables"
+  mock_responses:
+    sent:
+      status: "sent"
+      message_id: "MSG-123456"
+      delivery_time: "< 1 minute"
+    failed:
+      status: "failed"
+      error: "Invalid email address"
+
+transaction_db:
+  description: "Transaction database lookup"
+  parameters:
+    transaction_id:
+      type: string
+      description: "Transaction ID to lookup"
+  mock_responses:
+    suspicious_transaction:
+      transaction_id: "TXN-789123"
+      amount: 1250.00
+      merchant: "Electronics Store XYZ"
+      location: "New York, NY"
+      timestamp: "2024-03-14T10:30:00Z"
+      card_last_four: "4567"
+      status: "pending"
+    small_transaction:
+      transaction_id: "TXN-456789"
+      amount: 25.99
+      merchant: "Coffee Shop ABC"
+      location: "Seattle, WA"
+      timestamp: "2024-03-14T08:15:00Z"
+      card_last_four: "4567"
+      status: "pending"
+
+customer_db:
+  description: "Customer profile and history lookup"
+  parameters:
+    customer_id:
+      type: string
+      description: "Customer identifier"
+  mock_responses:
+    frequent_customer:
+      customer_id: "CUST-111"
+      name: "John Smith"
+      usual_locations: ["Seattle, WA", "Portland, OR"]
+      avg_transaction: 75.50
+      total_transactions: 156
+      member_since: "2022-08-01"
+      risk_score: "low"
+    new_customer:
+      customer_id: "CUST-222"
+      name: "Jane Doe"
+      usual_locations: ["Los Angeles, CA"]
+      avg_transaction: 45.00
+      total_transactions: 3
+      member_since: "2024-03-01"
+      risk_score: "medium"
+
+card_management:
+  description: "Payment card management operations"
+  parameters:
+    card_number:
+      type: string
+      description: "Last 4 digits of card"
+    action:
+      type: string
+      description: "Action to perform (block, unblock, etc.)"
+  mock_responses:
+    blocked:
+      status: "success"
+      action: "blocked"
+      card_last_four: "4567"
+      blocked_at: "2024-03-14T11:00:00Z"
+      reason: "Fraud prevention"
+
+case_management:
+  description: "Create and manage fraud investigation cases"
+  parameters:
+    case_type:
+      type: string
+      description: "Type of case to create"
+    details:
+      type: object
+      description: "Case details and evidence"
+  mock_responses:
+    case_created:
+      case_id: "CASE-2024-001234"
+      status: "open"
+      priority: "high"
+      assigned_to: "fraud_team"
+      created_at: "2024-03-14T11:05:00Z"

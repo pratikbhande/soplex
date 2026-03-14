@@ -1,0 +1,17 @@
+PROCEDURE: Customer Refund Request
+TRIGGER: Customer requests refund for order
+TOOLS: order_db, payments_api, identity_check
+
+1. Greet the customer and ask for their order number
+2. Lookup the order details in order_db using the provided order number
+3. Check if the order was placed within the last 30 days
+   - YES: Proceed to step 4
+   - NO: Inform customer that refunds are only available for orders within 30 days and end
+4. Verify customer identity using identity_check with order email
+5. Ask customer for the reason for the refund
+6. Check if the order status is "delivered" or "completed"
+   - YES: Proceed to step 7
+   - NO: Inform customer that unshipped orders can be canceled instead and end
+7. Calculate refund amount (order total minus shipping if applicable)
+8. Process the refund using payments_api
+9. Confirm with customer that refund has been processed and provide reference number

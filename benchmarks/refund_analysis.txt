@@ -1,0 +1,44 @@
+
+📊 SOP Analysis: Customer Refund Request
+
+                  Step Classification                   
+┏━┳━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━┓
+┃ ┃ … ┃ Action                                   ┃ Co… ┃
+┡━╇━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━┩
+│ │ … │ Greet the customer and ask for their     │ 0.… │
+│ │ … │ order number                             │     │
+│ │ … │ Lookup the order details in order_db     │ 0.… │
+│ │ … │ using the ...                            │     │
+│ │ … │ Check if the order was placed within the │ 1.… │
+│ │ … │ last 3...                                │     │
+│ │ … │ Verify customer identity using           │ 0.… │
+│ │ … │ identity_check w...                      │     │
+│ │ … │ Ask customer for the reason for the      │ 0.… │
+│ │ … │ refund                                   │     │
+│ │ … │ Check if the order status is "delivered" │ 1.… │
+│ │ … │ or "co...                                │     │
+│ │ … │ Calculate refund amount (order total     │ 0.… │
+│ │ … │ minus ship...                            │     │
+│ │ … │ Process the refund using payments_api    │ 0.… │
+│ │ … │                                          │     │
+│ │ … │ Confirm with customer that refund has    │ 0.… │
+│ │ … │ been proc...                             │     │
+└─┴───┴──────────────────────────────────────────┴─────┘
+╭─────────────────── Cost Analysis ────────────────────╮
+│ 💰 Cost Estimate (vs Pure LLM):                      │
+│                                                      │
+│ 🧠 LLM Steps:      3 (conversation)                  │
+│ ⚡ CODE Steps:     2 (deterministic logic)           │
+│ 🔀 HYBRID Steps:   0 (LLM + validation)              │
+│ 🔀 BRANCH Steps:   4 (conditional)                   │
+│                                                      │
+│ Pure LLM Cost:     $0.0002                           │
+│ Hybrid Cost:       $0.0007                           │
+│ Savings:           $-0.0005 (-229.6%)                │
+│                                                      │
+╰──────────────────────────────────────────────────────╯
+
+⚠️  Validation Warnings:
+  • Unreferenced steps: step_5, step_8
+
+🤖 Provider: openai | Model: gpt-4o-mini
