@@ -1,0 +1,522 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /home/pratik-bhande/Desktop/Python/Python POCS/soplex/venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/pratik-bhande/Desktop/Python/Python POCS/soplex
+configfile: pyproject.toml
+plugins: cov-7.0.0, asyncio-1.3.0, anyio-4.12.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 104 items
+
+tests/test_classifier.py::TestStepClassifier::test_llm_keywords PASSED   [  0%]
+tests/test_classifier.py::TestStepClassifier::test_code_keywords FAILED  [  1%]
+tests/test_classifier.py::TestStepClassifier::test_branch_keywords FAILED [  2%]
+tests/test_classifier.py::TestStepClassifier::test_escalate_keywords FAILED [  3%]
+tests/test_classifier.py::TestStepClassifier::test_end_keywords PASSED   [  4%]
+tests/test_classifier.py::TestStepClassifier::test_comparison_patterns PASSED [  5%]
+tests/test_classifier.py::TestStepClassifier::test_hybrid_classification FAILED [  6%]
+tests/test_classifier.py::TestStepClassifier::test_ambiguous_defaults_to_llm PASSED [  7%]
+tests/test_classifier.py::TestStepClassifier::test_check_colon_pattern PASSED [  8%]
+tests/test_classifier.py::TestStepClassifier::test_classification_summary PASSED [  9%]
+tests/test_classifier.py::TestStepClassifier::test_explain_classification PASSED [ 10%]
+tests/test_classifier.py::TestStepClassifier::test_edge_cases FAILED     [ 11%]
+tests/test_classifier.py::TestStepClassifier::test_confidence_scoring PASSED [ 12%]
+tests/test_classifier.py::TestStepClassifier::test_keyword_tracking PASSED [ 13%]
+tests/test_compiler.py::TestCompiler::test_compile_refund_sop PASSED     [ 14%]
+tests/test_compiler.py::TestCompiler::test_correct_node_count PASSED     [ 15%]
+tests/test_compiler.py::TestCompiler::test_code_handlers_exist PASSED    [ 16%]
+tests/test_compiler.py::TestCompiler::test_branch_edges_correct PASSED   [ 17%]
+tests/test_compiler.py::TestCompiler::test_start_node_set PASSED         [ 18%]
+tests/test_compiler.py::TestCompiler::test_linear_graph_creation PASSED  [ 19%]
+tests/test_compiler.py::TestCompiler::test_complexity_analysis PASSED    [ 20%]
+tests/test_e2e.py::TestE2EIntegration::test_real_openai_generation SKIPPED [ 21%]
+tests/test_e2e.py::TestE2EIntegration::test_compile_and_run_refund_sop SKIPPED [ 22%]
+tests/test_e2e.py::TestE2EIntegration::test_verify_correct_execution_path SKIPPED [ 23%]
+tests/test_e2e.py::TestE2EIntegration::test_cost_tracking_integration SKIPPED [ 24%]
+tests/test_e2e.py::TestE2EIntegration::test_error_handling_with_real_llm SKIPPED [ 25%]
+tests/test_e2e.py::TestE2EIntegration::test_provider_availability PASSED [ 25%]
+tests/test_e2e.py::TestE2EIntegration::test_full_workflow_with_visualization SKIPPED [ 26%]
+tests/test_e2e.py::TestE2EIntegration::test_multiple_provider_comparison FAILED [ 27%]
+tests/test_executor.py::TestSOPExecutor::test_executor_initialization PASSED [ 28%]
+tests/test_executor.py::TestSOPExecutor::test_execute_linear_graph PASSED [ 29%]
+tests/test_executor.py::TestSOPExecutor::test_execute_yes_branch PASSED  [ 30%]
+tests/test_executor.py::TestSOPExecutor::test_execute_no_branch PASSED   [ 31%]
+tests/test_executor.py::TestSOPExecutor::test_escalate_terminates PASSED [ 32%]
+tests/test_executor.py::TestSOPExecutor::test_code_step_skips_llm PASSED [ 33%]
+tests/test_executor.py::TestSOPExecutor::test_cost_tracking PASSED       [ 34%]
+tests/test_executor.py::TestSOPExecutor::test_max_steps_limit PASSED     [ 35%]
+tests/test_executor.py::TestSOPExecutor::test_tool_call_integration PASSED [ 36%]
+tests/test_executor.py::TestSOPExecutor::test_hybrid_step_execution FAILED [ 37%]
+tests/test_executor.py::TestSOPExecutor::test_graph_validation PASSED    [ 38%]
+tests/test_executor.py::TestSOPExecutor::test_error_handling FAILED      [ 39%]
+tests/test_executor.py::TestSOPExecutor::test_interactive_execution PASSED [ 40%]
+tests/test_graph.py::TestNode::test_create_basic_node PASSED             [ 41%]
+tests/test_graph.py::TestNode::test_create_branch_node PASSED            [ 42%]
+tests/test_graph.py::TestNode::test_branch_node_validation PASSED        [ 43%]
+tests/test_graph.py::TestNode::test_node_serialization PASSED            [ 44%]
+tests/test_graph.py::TestEdge::test_create_basic_edge PASSED             [ 45%]
+tests/test_graph.py::TestEdge::test_create_conditional_edge PASSED       [ 46%]
+tests/test_graph.py::TestEdge::test_edge_traversal_always PASSED         [ 47%]
+tests/test_graph.py::TestEdge::test_edge_traversal_yes PASSED            [ 48%]
+tests/test_graph.py::TestEdge::test_edge_traversal_no PASSED             [ 49%]
+tests/test_graph.py::TestEdge::test_edge_serialization PASSED            [ 50%]
+tests/test_graph.py::TestExecutionGraph::test_create_empty_graph PASSED  [ 50%]
+tests/test_graph.py::TestExecutionGraph::test_add_nodes PASSED           [ 51%]
+tests/test_graph.py::TestExecutionGraph::test_add_duplicate_node PASSED  [ 52%]
+tests/test_graph.py::TestExecutionGraph::test_add_edges PASSED           [ 53%]
+tests/test_graph.py::TestExecutionGraph::test_add_edge_invalid_nodes PASSED [ 54%]
+tests/test_graph.py::TestExecutionGraph::test_get_next_nodes_linear PASSED [ 55%]
+tests/test_graph.py::TestExecutionGraph::test_get_next_nodes_branch PASSED [ 56%]
+tests/test_graph.py::TestExecutionGraph::test_graph_validation PASSED    [ 57%]
+tests/test_graph.py::TestExecutionGraph::test_graph_summary PASSED       [ 58%]
+tests/test_graph.py::TestExecutionGraph::test_mermaid_generation PASSED  [ 59%]
+tests/test_graph.py::TestExecutionGraph::test_graph_save_load PASSED     [ 60%]
+tests/test_graph.py::TestGraphBuilder::test_build_simple_graph PASSED    [ 61%]
+tests/test_graph.py::TestGraphBuilder::test_build_branch_graph PASSED    [ 62%]
+tests/test_graph.py::TestGraphBuilder::test_code_generation PASSED       [ 63%]
+tests/test_graph.py::TestGraphBuilder::test_graph_complexity_analysis PASSED [ 64%]
+tests/test_graph.py::TestCodeGenerator::test_generate_code_handler PASSED [ 65%]
+tests/test_graph.py::TestCodeGenerator::test_generate_branch_handler PASSED [ 66%]
+tests/test_graph.py::TestCodeGenerator::test_compile_handlers_module PASSED [ 67%]
+tests/test_llm_provider.py::test_provider ERROR                          [ 68%]
+tests/test_llm_provider.py::TestLLMProvider::test_llm_response_creation PASSED [ 69%]
+tests/test_llm_provider.py::TestLLMProvider::test_openai_provider_init PASSED [ 70%]
+tests/test_llm_provider.py::TestLLMProvider::test_anthropic_provider_init PASSED [ 71%]
+tests/test_llm_provider.py::TestLLMProvider::test_gemini_provider_init PASSED [ 72%]
+tests/test_llm_provider.py::TestLLMProvider::test_ollama_provider_init PASSED [ 73%]
+tests/test_llm_provider.py::TestLLMProvider::test_custom_provider_init FAILED [ 74%]
+tests/test_llm_provider.py::TestLLMProvider::test_unsupported_provider_error FAILED [ 75%]
+tests/test_llm_provider.py::TestLLMProvider::test_openai_generate PASSED [ 75%]
+tests/test_llm_provider.py::TestLLMProvider::test_anthropic_generate FAILED [ 76%]
+tests/test_llm_provider.py::TestLLMProvider::test_litellm_generate PASSED [ 77%]
+tests/test_llm_provider.py::TestLLMProvider::test_cost_calculation PASSED [ 78%]
+tests/test_llm_provider.py::TestLLMProvider::test_ollama_zero_cost PASSED [ 79%]
+tests/test_llm_provider.py::TestLLMProvider::test_build_system_prompt PASSED [ 80%]
+tests/test_llm_provider.py::TestLLMProvider::test_get_supported_models PASSED [ 81%]
+tests/test_llm_provider.py::TestLLMProvider::test_create_provider_convenience PASSED [ 82%]
+tests/test_llm_provider.py::TestLLMProvider::test_generation_error_handling PASSED [ 83%]
+tests/test_llm_provider.py::TestLLMProvider::test_missing_api_key_error PASSED [ 84%]
+tests/test_llm_provider.py::TestLLMProvider::test_provider_status_check PASSED [ 85%]
+tests/test_llm_provider.py::TestLLMProvider::test_parameter_override PASSED [ 86%]
+tests/test_parser.py::TestSOPParser::test_parse_linear_sop PASSED        [ 87%]
+tests/test_parser.py::TestSOPParser::test_parse_branched_sop PASSED      [ 88%]
+tests/test_parser.py::TestSOPParser::test_parse_nested_branches PASSED   [ 89%]
+tests/test_parser.py::TestSOPParser::test_parse_tools_header PASSED      [ 90%]
+tests/test_parser.py::TestSOPParser::test_parse_escalate_step PASSED     [ 91%]
+tests/test_parser.py::TestSOPParser::test_parse_multiple_ends PASSED     [ 92%]
+tests/test_parser.py::TestSOPParser::test_parse_single_step PASSED       [ 93%]
+tests/test_parser.py::TestSOPParser::test_parse_no_header PASSED         [ 94%]
+tests/test_parser.py::TestSOPParser::test_parse_refund_example PASSED    [ 95%]
+tests/test_parser.py::TestSOPParser::test_step_numbering PASSED          [ 96%]
+tests/test_parser.py::TestSOPParser::test_tool_extraction PASSED         [ 97%]
+tests/test_parser.py::TestSOPParser::test_validation_errors PASSED       [ 98%]
+tests/test_parser.py::TestSOPParser::test_step_statistics PASSED         [ 99%]
+tests/test_parser.py::TestSOPParser::test_cost_estimation FAILED         [100%]
+
+==================================== ERRORS ====================================
+_______________________ ERROR at setup of test_provider ________________________
+file /home/pratik-bhande/Desktop/Python/Python POCS/soplex/src/soplex/llm/provider.py, line 408
+  def test_provider(provider: str) -> Dict[str, Any]:
+E       fixture 'provider' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop_policy, fraud_check_sop, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, mock_llm_provider, mock_tools, monkeypatch, no_cover, parsed_branch_sop, parsed_linear_sop, parsed_refund_sop, password_reset_sop, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, refund_sop, sample_branch_sop, sample_complex_sop, sample_linear_sop, setup_test_environment, sop_parser, subtests, temp_sop_file, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, tools_definitions, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/home/pratik-bhande/Desktop/Python/Python POCS/soplex/src/soplex/llm/provider.py:408
+=================================== FAILURES ===================================
+____________________ TestStepClassifier.test_code_keywords _____________________
+
+self = <tests.test_classifier.TestStepClassifier object at 0x7db956818260>
+
+    def test_code_keywords(self):
+        """Test classification of CODE/deterministic steps."""
+        test_cases = [
+            "Check if the order was placed within 30 days",
+            "Lookup user details in the database",
+            "Calculate the refund amount",
+            "Fetch order information from order_db",
+            "Verify the customer's identity",
+            "Query the payment system for transaction details",
+            "Process the payment using the API",
+            "Update the order status to completed",
+            "Send notification to the shipping service",
+        ]
+    
+        for step_text in test_cases:
+            step_type, keywords, confidence = StepClassifier.classify_step(step_text, 1)
+>           assert step_type == StepType.CODE, f"'{step_text}' should be classified as CODE"
+E           AssertionError: 'Verify the customer's identity' should be classified as CODE
+E           assert <StepType.BRANCH: 'branch'> == <StepType.CODE: 'code'>
+E             
+E             - code
+E             + branch
+
+tests/test_classifier.py:47: AssertionError
+___________________ TestStepClassifier.test_branch_keywords ____________________
+
+self = <tests.test_classifier.TestStepClassifier object at 0x7db956818560>
+
+    def test_branch_keywords(self):
+        """Test classification of BRANCH/conditional steps."""
+        test_cases = [
+            "Check if the account is active",
+            "Verify whether the payment was successful",
+            "Determine if the user is authorized",
+            "If the amount is over $100, require approval",
+            "When the order status is delivered, proceed",
+            "Check: Is the customer a premium member?",
+        ]
+    
+        for step_text in test_cases:
+            step_type, keywords, confidence = StepClassifier.classify_step(step_text, 1)
+>           assert step_type in [StepType.BRANCH, StepType.CODE], \
+                f"'{step_text}' should be classified as BRANCH or CODE"
+E           AssertionError: 'If the amount is over $100, require approval' should be classified as BRANCH or CODE
+E           assert <StepType.ESCALATE: 'escalate'> in [<StepType.BRANCH: 'branch'>, <StepType.CODE: 'code'>]
+
+tests/test_classifier.py:63: AssertionError
+__________________ TestStepClassifier.test_escalate_keywords ___________________
+
+self = <tests.test_classifier.TestStepClassifier object at 0x7db956818860>
+
+    def test_escalate_keywords(self):
+        """Test classification of ESCALATE steps."""
+        test_cases = [
+            "Escalate to supervisor for approval",
+            "Hand off to human agent for complex handling",
+            "Transfer to human support representative",
+            "Flag for manual review by security team",
+            "Contact manager for authorization",
+        ]
+    
+        for step_text in test_cases:
+            step_type, keywords, confidence = StepClassifier.classify_step(step_text, 1)
+>           assert step_type == StepType.ESCALATE, f"'{step_text}' should be classified as ESCALATE"
+E           AssertionError: 'Contact manager for authorization' should be classified as ESCALATE
+E           assert <StepType.LLM: 'llm'> == <StepType.ESC...E: 'escalate'>
+E             
+E             - escalate
+E             + llm
+
+tests/test_classifier.py:78: AssertionError
+________________ TestStepClassifier.test_hybrid_classification _________________
+
+self = <tests.test_classifier.TestStepClassifier object at 0x7db956819160>
+
+    def test_hybrid_classification(self):
+        """Test classification of HYBRID steps (LLM + CODE)."""
+        test_cases = [
+            "Ask the customer for order number and verify it in the database",
+            "Greet the user and check their account status",
+            "Confirm the payment details and process the transaction",
+            "Inform customer about the issue and update their record",
+        ]
+    
+        for step_text in test_cases:
+            step_type, keywords, confidence = StepClassifier.classify_step(step_text, 1)
+>           assert step_type == StepType.HYBRID, f"'{step_text}' should be classified as HYBRID"
+E           AssertionError: 'Ask the customer for order number and verify it in the database' should be classified as HYBRID
+E           assert <StepType.BRANCH: 'branch'> == <StepType.HYBRID: 'hybrid'>
+E             
+E             - hybrid
+E             + branch
+
+tests/test_classifier.py:125: AssertionError
+______________________ TestStepClassifier.test_edge_cases ______________________
+
+self = <tests.test_classifier.TestStepClassifier object at 0x7db95681a060>
+
+    def test_edge_cases(self):
+        """Test edge cases and special patterns."""
+        edge_cases = [
+            ("", StepType.LLM),  # Empty string
+            ("1. ", StepType.LLM),  # Just step number
+            ("Process the user's request immediately", StepType.CODE),  # Multiple keywords
+            ("Ask user to confirm and then process payment", StepType.HYBRID),  # Clear hybrid
+        ]
+    
+        for step_text, expected_type in edge_cases:
+            step_type, keywords, confidence = StepClassifier.classify_step(step_text, 1)
+>           assert step_type == expected_type, f"'{step_text}' should be {expected_type.value}"
+E           AssertionError: 'Process the user's request immediately' should be code
+E           assert <StepType.LLM: 'llm'> == <StepType.CODE: 'code'>
+E             
+E             - code
+E             + llm
+
+tests/test_classifier.py:205: AssertionError
+_____________ TestE2EIntegration.test_multiple_provider_comparison _____________
+
+self = <tests.test_e2e.TestE2EIntegration object at 0x7db95687e5d0>
+
+    @pytest.mark.slow
+    def test_multiple_provider_comparison(self):
+        """Test multiple providers if available (marked as slow)."""
+        providers_to_test = []
+    
+        if os.getenv("OPENAI_API_KEY"):
+            providers_to_test.append(("openai", "gpt-4o-mini"))
+    
+        if os.getenv("ANTHROPIC_API_KEY"):
+            providers_to_test.append(("anthropic", "claude-haiku-4-5-20251001"))
+    
+        if not providers_to_test:
+            pytest.skip("No API keys available for provider comparison")
+    
+        results = {}
+        test_messages = [
+            {"role": "user", "content": "Explain what a customer refund is in one sentence."}
+        ]
+    
+        for provider, model in providers_to_test:
+            try:
+                config = get_config(provider=provider, model=model)
+                llm_provider = LLMProvider(config)
+    
+                response = llm_provider.generate(test_messages, max_tokens=30)
+    
+                results[provider] = {
+                    "success": True,
+                    "cost": response.cost,
+                    "tokens": response.usage["total_tokens"],
+                    "response_length": len(response.content)
+                }
+    
+            except Exception as e:
+                results[provider] = {
+                    "success": False,
+                    "error": str(e)
+                }
+    
+        # Should have at least one successful result
+        successful_providers = [p for p, r in results.items() if r.get("success")]
+>       assert len(successful_providers) > 0, f"No providers worked. Results: {results}"
+E       AssertionError: No providers worked. Results: {'openai': {'success': False, 'error': "LLM generation failed (openai): Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-test-key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}"}}
+E       assert 0 > 0
+E        +  where 0 = len([])
+
+tests/test_e2e.py:313: AssertionError
+__________________ TestSOPExecutor.test_hybrid_step_execution __________________
+
+self = <tests.test_executor.TestSOPExecutor object at 0x7db95687d130>
+mock_llm_provider = <Mock spec='LLMProvider' id='138234953975136'>
+mock_tool_registry = <soplex.runtime.tool_registry.ToolRegistry object at 0x7db95553c4a0>
+
+    def test_hybrid_step_execution(self, mock_llm_provider, mock_tool_registry):
+        """Test HYBRID step execution (LLM + code)."""
+        graph = ExecutionGraph(name="Hybrid Test")
+    
+        node = Node(
+            id="step_1",
+            type=NodeType.HYBRID,
+            action="Ask user and validate response",
+            step_number=1
+        )
+        graph.add_node(node)
+    
+        executor = SOPExecutor(
+            llm_provider=mock_llm_provider,
+            tool_registry=mock_tool_registry
+        )
+    
+        results = list(executor.execute_interactive(graph))
+    
+        assert len(results) == 1
+        result = results[0]
+    
+        # Should have both LLM and code execution
+        assert result.llm_response is not None
+>       assert result.code_executed
+E       assert False
+E        +  where False = StepResult(step_id='step_1', step_number=1, step_type='hybrid', action='Ask user and validate response', status='completed', result={'status': 'completed', 'llm_response': "Hello! I'll help you with this step.", 'llm_provider': 'mock', 'llm_model': 'gpt-4o-mini', 'cost': 2.7e-05, 'tokens': 18, 'finish_reason': None}, duration_ms=0.21719932556152344, timestamp='2026-03-14T23:51:10.305199', cost=2.7e-05, tokens_used=18, error=None, llm_response="Hello! I'll help you with this step.", llm_provider='mock', llm_model='gpt-4o-mini', code_executed=False, condition_result=None).code_executed
+
+tests/test_executor.py:300: AssertionError
+_____________________ TestSOPExecutor.test_error_handling ______________________
+
+self = <tests.test_executor.TestSOPExecutor object at 0x7db9568a0500>
+mock_llm_provider = <Mock spec='LLMProvider' id='138234953983152'>
+mock_tool_registry = <soplex.runtime.tool_registry.ToolRegistry object at 0x7db95553cc50>
+
+    def test_error_handling(self, mock_llm_provider, mock_tool_registry):
+        """Test error handling during execution."""
+        # Configure mock to raise error
+        mock_llm_provider.generate.side_effect = Exception("LLM error")
+    
+        graph = ExecutionGraph(name="Error Test")
+        node = Node(id="step_1", type=NodeType.LLM, action="This will fail", step_number=1)
+        graph.add_node(node)
+    
+        executor = SOPExecutor(
+            llm_provider=mock_llm_provider,
+            tool_registry=mock_tool_registry
+        )
+    
+        state = executor.execute(graph)
+    
+        assert state.status == ExecutionStatus.FAILED
+>       assert len(state.errors) > 0
+E       assert 0 > 0
+E        +  where 0 = len([])
+E        +    where [] = <soplex.runtime.state.ExecutionState object at 0x7db95553df70>.errors
+
+tests/test_executor.py:343: AssertionError
+__________________ TestLLMProvider.test_custom_provider_init ___________________
+
+self = <tests.test_llm_provider.TestLLMProvider object at 0x7db9568c2780>
+
+    @patch.dict('os.environ', {'SOPLEX_BASE_URL': 'https://custom.api.com'})
+    def test_custom_provider_init(self):
+        """Test custom provider initialization."""
+        config = SoplexConfig(provider="custom", model="custom-model")
+    
+        with patch('openai.OpenAI') as mock_openai:
+            provider = LLMProvider(config)
+            assert provider.provider_name == "custom"
+>           mock_openai.assert_called_once_with(
+                api_key='custom',
+                base_url='https://custom.api.com'
+            )
+
+tests/test_llm_provider.py:87: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.12/unittest/mock.py:956: in assert_called_once_with
+    return self.assert_called_with(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <MagicMock name='OpenAI' id='138234947649312'>, args = ()
+kwargs = {'api_key': 'custom', 'base_url': 'https://custom.api.com'}
+expected = call(api_key='custom', base_url='https://custom.api.com')
+actual = call(api_key='sk-test-key', base_url='https://custom.api.com')
+_error_message = <function NonCallableMock.assert_called_with.<locals>._error_message at 0x7db954f1a980>
+cause = None
+
+    def assert_called_with(self, /, *args, **kwargs):
+        """assert that the last call was made with the specified arguments.
+    
+        Raises an AssertionError if the args and keyword args passed in are
+        different to the last call to the mock."""
+        if self.call_args is None:
+            expected = self._format_mock_call_signature(args, kwargs)
+            actual = 'not called.'
+            error_message = ('expected call not found.\nExpected: %s\n  Actual: %s'
+                    % (expected, actual))
+            raise AssertionError(error_message)
+    
+        def _error_message():
+            msg = self._format_mock_failure_message(args, kwargs)
+            return msg
+        expected = self._call_matcher(_Call((args, kwargs), two=True))
+        actual = self._call_matcher(self.call_args)
+        if actual != expected:
+            cause = expected if isinstance(expected, Exception) else None
+>           raise AssertionError(_error_message()) from cause
+E           AssertionError: expected call not found.
+E           Expected: OpenAI(api_key='custom', base_url='https://custom.api.com')
+E             Actual: OpenAI(api_key='sk-test-key', base_url='https://custom.api.com')
+
+/usr/lib/python3.12/unittest/mock.py:944: AssertionError
+_______________ TestLLMProvider.test_unsupported_provider_error ________________
+
+self = <tests.test_llm_provider.TestLLMProvider object at 0x7db9568c0320>
+
+    def test_unsupported_provider_error(self):
+        """Test error for unsupported provider."""
+>       config = SoplexConfig(provider="unsupported", model="test")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_llm_provider.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/soplex/config.py:80: in __init__
+    self._validate_config()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = SoplexConfig({'provider': 'unsupported', 'model': 'test', 'temperature': 0.3, 'max_tokens': 512, 'max_steps': 50, 'timeout_seconds': 120, 'base_url': ''})
+
+    def _validate_config(self) -> None:
+        """Validate configuration values."""
+        # Ensure provider is supported
+        if self._config["provider"] not in PROVIDER_DEFAULTS:
+>           raise ValueError(f"Unsupported provider: {self._config['provider']}")
+E           ValueError: Unsupported provider: unsupported
+
+src/soplex/config.py:111: ValueError
+___________________ TestLLMProvider.test_anthropic_generate ____________________
+
+self = <tests.test_llm_provider.TestLLMProvider object at 0x7db9568c3080>
+mock_anthropic = <MagicMock name='Anthropic' id='138234947531264'>
+
+    @patch.dict('os.environ', {'ANTHROPIC_API_KEY': 'sk-ant-test'})
+    @patch('anthropic.Anthropic')
+    def test_anthropic_generate(self, mock_anthropic):
+        """Test Anthropic generation."""
+        # Set up mock response
+        mock_response = Mock()
+        mock_response.content = [Mock()]
+        mock_response.content[0].text = "Claude response"
+        mock_response.stop_reason = "end_turn"
+        mock_response.usage.input_tokens = 8
+        mock_response.usage.output_tokens = 7
+    
+        mock_client = Mock()
+        mock_client.messages.create.return_value = mock_response
+        mock_anthropic.return_value = mock_client
+    
+        config = SoplexConfig(provider="anthropic", model="claude-sonnet-4-20250514")
+        provider = LLMProvider(config)
+    
+        messages = [
+            {"role": "system", "content": "You are helpful"},
+            {"role": "user", "content": "Hello"}
+        ]
+        response = provider.generate(messages)
+    
+        assert isinstance(response, LLMResponse)
+        assert response.content == "Claude response"
+>       assert response.usage["input_tokens"] == 8
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'input_tokens'
+
+tests/test_llm_provider.py:156: KeyError
+______________________ TestSOPParser.test_cost_estimation ______________________
+
+self = <tests.test_parser.TestSOPParser object at 0x7db9568c2bd0>
+parsed_refund_sop = SOPDefinition(name='Customer Refund Request', trigger='Customer requests refund for order', tools=['order_db', 'paymen...de reference number', start_step_id='step_1', total_steps=9, llm_steps=3, code_steps=2, hybrid_steps=0, branch_steps=4)
+
+    def test_cost_estimation(self, parsed_refund_sop):
+        """Test cost estimation functionality."""
+        sop_def = parsed_refund_sop
+        from soplex.config import PRICING
+    
+        cost_estimate = sop_def.get_cost_estimate(PRICING)
+    
+        assert "llm_cost" in cost_estimate
+        assert "code_cost" in cost_estimate
+        assert "total_cost" in cost_estimate
+        assert "savings" in cost_estimate
+        assert "savings_percent" in cost_estimate
+    
+        # Should show savings for hybrid approach
+>       assert cost_estimate["savings"] >= 0
+E       assert -0.000465 >= 0
+
+tests/test_parser.py:222: AssertionError
+=============================== warnings summary ===============================
+tests/test_e2e.py:272
+  /home/pratik-bhande/Desktop/Python/Python POCS/soplex/tests/test_e2e.py:272: PytestUnknownMarkWarning: Unknown pytest.mark.slow - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.slow
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_classifier.py::TestStepClassifier::test_code_keywords - Ass...
+FAILED tests/test_classifier.py::TestStepClassifier::test_branch_keywords - A...
+FAILED tests/test_classifier.py::TestStepClassifier::test_escalate_keywords
+FAILED tests/test_classifier.py::TestStepClassifier::test_hybrid_classification
+FAILED tests/test_classifier.py::TestStepClassifier::test_edge_cases - Assert...
+FAILED tests/test_e2e.py::TestE2EIntegration::test_multiple_provider_comparison
+FAILED tests/test_executor.py::TestSOPExecutor::test_hybrid_step_execution - ...
+FAILED tests/test_executor.py::TestSOPExecutor::test_error_handling - assert ...
+FAILED tests/test_llm_provider.py::TestLLMProvider::test_custom_provider_init
+FAILED tests/test_llm_provider.py::TestLLMProvider::test_unsupported_provider_error
+FAILED tests/test_llm_provider.py::TestLLMProvider::test_anthropic_generate
+FAILED tests/test_parser.py::TestSOPParser::test_cost_estimation - assert -0....
+ERROR tests/test_llm_provider.py::test_provider
+======== 12 failed, 85 passed, 6 skipped, 1 warning, 1 error in 10.15s =========

@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "soplex-ai"
-version = "0.1.1"
+version = "0.1.4"
 description = "Compile plain-English SOPs into executable, cost-optimized agent graphs"
 authors = [
     {name = "soplex", email = "info@soplex.dev"}

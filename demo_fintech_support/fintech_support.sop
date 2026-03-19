@@ -1,0 +1,20 @@
+PROCEDURE: Fintech Customer Support - Dispute Resolution
+TRIGGER: Customer reports an unauthorized transaction or fee dispute.
+TOOLS: user_db, transaction_api, fraud_detection, notification_service
+
+1. Greet the customer and ask for the specific transaction ID and amount they are disputing.
+2. Lookup the transaction details in transaction_api using the provided transaction ID.
+3. Check if the transaction is older than 60 days
+   - YES: Inform the customer that unfortunately disputes for transactions older than 60 days cannot be processed, and end the procedure.
+   - NO: Proceed to step 4.
+4. Verify the customer identity by asking for the last 4 digits of their registered phone number.
+5. Check if the provided digits match the phone number in user_db for this account.
+   - YES: Proceed to step 6.
+   - NO: Escalate to a human security agent.
+6. Run fraud_detection checks on the transaction to generate a risk score.
+7. Check if the risk score is above 80
+   - YES: Temporarily freeze the account using user_db and escalate to the fraud team.
+   - NO: Proceed to step 8.
+8. Process a provisional credit for the disputed amount using transaction_api.
+9. Send an email confirmation of the provisional credit using notification_service.
+10. Inform the customer that the dispute is under investigation and a provisional credit has been issued, and complete the process.

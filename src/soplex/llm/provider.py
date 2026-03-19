@@ -76,7 +76,7 @@ class LLMProvider:
         try:
             import anthropic
         except ImportError:
-            raise ImportError("Anthropic library not installed. Run: pip install soplex[anthropic]")
+            raise ImportError("Anthropic library not installed. Run: pip install soplex-ai[anthropic]")
 
         api_key = self.config.get_api_key("anthropic")
         if not api_key:
@@ -121,7 +121,7 @@ class LLMProvider:
         try:
             import litellm
         except ImportError:
-            raise ImportError("LiteLLM library not installed. Run: pip install soplex[litellm]")
+            raise ImportError("LiteLLM library not installed. Run: pip install soplex-ai[litellm]")
 
         self._client = litellm
 

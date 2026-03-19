@@ -280,7 +280,7 @@ soplex.compile('prescription_verification.sop', safety_checks=True)
 
 ### Installation
 ```bash
-pip install soplex
+pip install soplex-ai
 ```
 
 ### Basic Usage
