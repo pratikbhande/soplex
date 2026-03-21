@@ -10,7 +10,7 @@ Transform Standard Operating Procedures into hybrid agent graphs where:
 Result: 77% cheaper than pure-LLM agents with 99%+ decision accuracy.
 """
 
-__version__ = "0.1.4"
+__version__ = "0.1.5"
 __author__ = "soplex"
 __email__ = "info@soplex.dev"
 
