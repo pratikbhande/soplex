@@ -10,7 +10,7 @@ Transform Standard Operating Procedures into hybrid agent graphs where:
 Result: 77% cheaper than pure-LLM agents with 99%+ decision accuracy.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.4"
 __author__ = "soplex"
 __email__ = "info@soplex.dev"
 
@@ -23,6 +23,7 @@ from .parser.models import (
     BranchCondition,
     Tool,
 )
+from .compiler.python_api import PythonGraphBuilder
 
 __all__ = [
     "__version__",
@@ -33,4 +34,5 @@ __all__ = [
     "StepType",
     "BranchCondition",
     "Tool",
+    "PythonGraphBuilder",
 ]

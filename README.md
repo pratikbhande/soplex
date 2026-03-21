@@ -15,12 +15,12 @@ Transform Standard Operating Procedures into hybrid agent graphs where conversat
 ## 📦 Installation
 
 ```bash
-pip install soplex
+pip install soplex-ai
 
 # Optional providers
-pip install soplex[anthropic]    # Anthropic Claude
-pip install soplex[litellm]      # LiteLLM
-pip install soplex[all]          # All providers
+pip install soplex-ai[anthropic]    # Anthropic Claude
+pip install soplex-ai[litellm]      # LiteLLM
+pip install soplex-ai[all]          # All providers
 ```
 
 ## 🔧 Quick Start
@@ -71,6 +71,42 @@ soplex compile refund.sop --output ./compiled/
 
 # Interactive chat with the agent
 soplex chat ./compiled/refund.json
+```
+
+## 🚀 Programmatic Python API
+For engineers who prefer native Python code over parsing text files, Soplex provides a `PythonGraphBuilder`. This bypasses LLM code synthesis entirely, allowing robust deterministic routing logic.
+
+```python
+from soplex import PythonGraphBuilder
+
+builder = PythonGraphBuilder(name="Native Support Flow")
+
+# 1. Add LLM interaction
+builder.add_llm_step(id="start", action="Greet customer")
+
+# 2. Add specific explicit Python logic
+def process_data(state):
+    state["verified"] = True
+    return state
+    
+builder.add_code_step(
+    id="verify", 
+    action="Verify data", 
+    handler_func=process_data
+)
+
+# 3. Add a branch decision point
+builder.add_branch_step(id="check", action="Check verified")
+builder.add_end_step(id="success", action="Finish")
+builder.add_end_step(id="fail", action="Fail")
+
+# 4. Wire edges with strict Python conditions
+builder.add_edge("start", "verify")
+builder.add_edge("verify", "check")
+builder.add_edge("check", "success", condition_func=lambda s: s.get("verified"))
+builder.add_edge("check", "fail", condition_func=lambda s: not s.get("verified"))
+
+graph = builder.build()
 ```
 
 ## 🎯 Step Types
