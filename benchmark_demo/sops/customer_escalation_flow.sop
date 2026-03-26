@@ -1,0 +1,37 @@
+PROCEDURE: Customer Support Escalation Management
+TRIGGER: Customer raises complaint or complex inquiry requiring escalation
+TOOLS: crm_system, knowledge_base, ticket_management, customer_history_api, satisfaction_tracker
+
+1. Greet the customer warmly and ask them to explain their concern in detail
+2. Retrieve customer account information from crm_system using customer_id or phone number
+3. Review customer's interaction history from customer_history_api for context
+4. Classify the inquiry type based on customer description and historical patterns
+5. Check if the inquiry is a standard issue that can be resolved with self-service options
+   - YES: Guide customer to appropriate self-service solution and proceed to step 18
+   - NO: Proceed to step 6
+6. Search knowledge_base for relevant solutions matching the customer's specific issue
+7. Check if a documented solution exists for this type of problem
+   - YES: Attempt to resolve using documented procedure and proceed to step 16
+   - NO: Proceed to step 8 for escalation assessment
+8. Assess the complexity and urgency of the customer's issue using established criteria
+9. Check if the customer has VIP status or premium account tier
+   - YES: Apply expedited escalation process and proceed to step 11
+   - NO: Proceed to step 10
+10. Evaluate if the issue requires specialized technical knowledge or management approval
+11. Check if the issue falls under standard tier-2 support categories
+    - YES: Escalate to specialist_support_team with detailed case summary
+    - NO: Proceed to step 12
+12. Determine if the issue involves potential service failure or billing disputes over £500
+13. Check if the case requires senior management intervention or legal consideration
+    - YES: Escalate to management_team with urgent priority flag
+    - NO: Route to appropriate specialist team based on issue category
+14. Create detailed escalation ticket with customer context, attempted solutions, and urgency level
+15. Provide customer with escalation reference number and expected resolution timeline
+16. Follow up with customer after applying suggested solution to confirm resolution
+17. Check if the customer confirms their issue has been fully resolved
+    - YES: Request satisfaction rating and proceed to step 19
+    - NO: Re-escalate with additional context and customer feedback
+18. Verify that self-service solution resolved the customer's original concern
+19. Update customer satisfaction metrics in satisfaction_tracker system
+20. Document case resolution details and any process improvements for knowledge_base
+21. Thank customer for their patience and confirm they have no additional concerns and end

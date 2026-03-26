@@ -1,0 +1,42 @@
+PROCEDURE: FCA Regulatory Compliance Review
+TRIGGER: Monthly regulatory compliance assessment or audit trigger event
+TOOLS: compliance_db, audit_trail_system, regulatory_api, risk_calculator, reporting_engine
+
+1. Initialize comprehensive compliance review process for current reporting period
+2. Query compliance_db to retrieve all transaction records for the review period
+3. Calculate total transaction volumes and values across all customer segments
+4. Check if any transaction volumes exceed FCA reporting thresholds for large exposures
+   - YES: Flag for detailed Large Exposure reporting and proceed to step 5
+   - NO: Proceed to step 7
+5. Generate Large Exposure report with detailed counterparty analysis
+6. Submit Large Exposure data to FCA via regulatory_api within required timeframe
+7. Review all customer onboarding activities completed during the period
+8. Verify that KYC documentation meets current FCA standards for all new customers
+9. Check if any customer onboarding files are missing required documentation
+   - YES: Generate deficiency report and escalate to compliance_officer
+   - NO: Proceed to step 10
+10. Analyze all AML alerts and investigations conducted during the review period
+11. Calculate the percentage of AML alerts that resulted in Suspicious Activity Reports (SARs)
+12. Check if SAR filing rate is within expected industry benchmarks (2-5% of alerts)
+    - YES: Proceed to step 13
+    - NO: Investigate potential under-reporting and escalate to aml_compliance_head
+13. Review all customer complaints and their resolution outcomes
+14. Verify that complaint resolution times meet FCA requirements (15 business days standard)
+15. Check if any complaints were escalated to Financial Ombudsman Service (FOS)
+    - YES: Review FOS cases for potential systemic issues and proceed to step 16
+    - NO: Proceed to step 17
+16. Analyze FOS escalation patterns to identify root cause compliance gaps
+17. Query audit_trail_system for all privileged access events and system changes
+18. Verify that all system modifications were properly authorized and documented
+19. Check if any unauthorized access attempts or security breaches occurred
+    - YES: Escalate to information_security_team and regulatory_affairs
+    - NO: Proceed to step 20
+20. Calculate firm-wide risk metrics using risk_calculator for capital adequacy assessment
+21. Verify that capital ratios meet FCA minimum requirements plus internal buffers
+22. Check if stress test scenarios indicate potential capital adequacy concerns
+    - YES: Generate early warning report for senior_management and FCA
+    - NO: Proceed to step 23
+23. Compile all regulatory metrics into comprehensive compliance dashboard
+24. Generate automated regulatory returns using reporting_engine for FCA submission
+25. Schedule management attestation review for all regulatory submissions
+26. Archive all compliance evidence and audit trails for regulatory retention requirements and end
