@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soplex AI - Cost Optimization Demo</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/enhanced-style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-section">
+                <h1 class="logo">🚀 SOPLEX AI</h1>
+                <p class="tagline">Enterprise Agent Cost Optimization</p>
+            </div>
+            <div class="stats-preview">
+                <div class="stat-item">
+                    <span class="stat-value">77%</span>
+                    <span class="stat-label">Cost Reduction</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">4x</span>
+                    <span class="stat-label">Faster Execution</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">99%+</span>
+                    <span class="stat-label">Accuracy</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Graph Visualization Section -->
+        <section class="graph-section">
+            <h2>🎯 Soplex Execution Graph</h2>
+            <p class="graph-subtitle">See how your SOP is compiled into an optimized execution graph</p>
+
+            <div class="graph-container">
+                <div class="graph-controls">
+                    <button id="loadGraph" class="load-graph-btn">
+                        <span class="btn-icon">🔍</span>
+                        Load Compiled Graph
+                    </button>
+                    <div class="graph-status" id="graphStatus">
+                        <span class="status-text">Click to load your compiled graph visualization</span>
+                    </div>
+                </div>
+
+                <!-- Graph Visualization -->
+                <div class="graph-visualization" id="graphVisualization" style="display: none;">
+                    <div class="graph-stats" id="graphStats">
+                        <!-- Stats will be populated dynamically -->
+                    </div>
+                    <div class="graph-display">
+                        <div id="interactiveGraph" class="interactive-graph"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Static Comparison Section -->
+        <section class="static-comparison">
+            <h2>📊 Traditional vs Soplex Comparison</h2>
+            <p class="comparison-subtitle">Enterprise KYC Process Analysis - Before Running Demo</p>
+
+            <div class="comparison-grid">
+                <!-- Traditional Approach Card -->
+                <div class="comparison-card traditional-card">
+                    <div class="card-header">
+                        <h3>🏛️ Traditional LLM Approach</h3>
+                        <span class="approach-badge traditional">Current Method</span>
+                    </div>
+
+                    <div class="metrics-list">
+                        <div class="metric-row">
+                            <span class="metric-label">💰 Total Cost</span>
+                            <span class="metric-value cost-high">$0.1056</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">🧠 LLM Calls</span>
+                            <span class="metric-value">16 calls</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">⏱️ Execution Time</span>
+                            <span class="metric-value">4.45 seconds</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">🎯 Accuracy Risk</span>
+                            <span class="metric-value risk-high">High (LLM Errors)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">🏗️ Architecture</span>
+                            <span class="metric-value">Pure LLM</span>
+                        </div>
+                    </div>
+
+                    <div class="execution-flow">
+                        <h4>Execution Pattern:</h4>
+                        <div class="flow-steps">
+                            <span class="flow-step llm">🧠</span>
+                            <span class="flow-step llm">🧠</span>
+                            <span class="flow-step llm">🧠</span>
+                            <span class="flow-step llm">🧠</span>
+                            <span class="flow-step llm">🧠</span>
+                            <span class="flow-step llm">🧠</span>
+                            <span class="flow-more">...</span>
+                        </div>
+                        <p class="flow-description">Every step requires expensive LLM calls</p>
+                    </div>
+                </div>
+
+                <!-- VS Divider -->
+                <div class="vs-divider">
+                    <div class="vs-circle">VS</div>
+                    <div class="improvement-badge">
+                        <span class="improvement-text">77% Cost Reduction</span>
+                        <span class="improvement-subtext">4x Faster</span>
+                    </div>
+                </div>
+
+                <!-- Soplex Approach Card -->
+                <div class="comparison-card soplex-card">
+                    <div class="card-header">
+                        <h3>🚀 Soplex Hybrid Approach</h3>
+                        <span class="approach-badge soplex">Optimized Method</span>
+                    </div>
+
+                    <div class="metrics-list">
+                        <div class="metric-row">
+                            <span class="metric-label">💰 Total Cost</span>
+                            <span class="metric-value cost-low">$0.0228</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">🧠 LLM Calls</span>
+                            <span class="metric-value">4 calls</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">⏱️ Execution Time</span>
+                            <span class="metric-value">0.94 seconds</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">🎯 Accuracy Risk</span>
+                            <span class="metric-value risk-low">Minimal (Deterministic)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">🏗️ Architecture</span>
+                            <span class="metric-value">LLM + Code + APIs</span>
+                        </div>
+                    </div>
+
+                    <div class="execution-flow">
+                        <h4>Execution Pattern:</h4>
+                        <div class="flow-steps">
+                            <span class="flow-step llm">🧠</span>
+                            <span class="flow-step code">⚡</span>
+                            <span class="flow-step api">🔌</span>
+                            <span class="flow-step code">⚡</span>
+                            <span class="flow-step llm">🧠</span>
+                            <span class="flow-step code">⚡</span>
+                            <span class="flow-more">...</span>
+                        </div>
+                        <p class="flow-description">Hybrid: LLM for conversation, code for logic</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Improvements Summary -->
+            <div class="improvements-summary">
+                <h3>📈 Key Improvements</h3>
+                <div class="improvements-grid">
+                    <div class="improvement-item">
+                        <div class="improvement-icon">💰</div>
+                        <div class="improvement-content">
+                            <h4>78% Cost Savings</h4>
+                            <p>$0.1056 → $0.0228</p>
+                        </div>
+                    </div>
+                    <div class="improvement-item">
+                        <div class="improvement-icon">⚡</div>
+                        <div class="improvement-content">
+                            <h4>4.7x Faster</h4>
+                            <p>4.45s → 0.94s</p>
+                        </div>
+                    </div>
+                    <div class="improvement-item">
+                        <div class="improvement-icon">🧠</div>
+                        <div class="improvement-content">
+                            <h4>75% Fewer LLM Calls</h4>
+                            <p>16 → 4 calls</p>
+                        </div>
+                    </div>
+                    <div class="improvement-item">
+                        <div class="improvement-icon">🎯</div>
+                        <div class="improvement-content">
+                            <h4>Higher Accuracy</h4>
+                            <p>Deterministic logic</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Demo Section -->
+        <section class="live-demo-section">
+            <div class="demo-header">
+                <h2>🎯 Live Performance Demo</h2>
+                <p>Watch the real-time execution and cost comparison</p>
+            </div>
+
+            <!-- Demo Controls -->
+            <div class="demo-controls">
+                <button id="startDemo" class="start-btn">
+                    <span class="btn-icon">⚡</span>
+                    Run Live Comparison
+                </button>
+                <div class="demo-status" id="demoStatus">
+                    <span class="status-indicator"></span>
+                    <span class="status-text">Ready to start demo</span>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container" id="progressContainer" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-steps">
+                    <div class="step">Traditional</div>
+                    <div class="step">Soplex</div>
+                    <div class="step">Compare</div>
+                </div>
+            </div>
+
+            <!-- Live Logs -->
+            <div class="logs-container" id="logsContainer" style="display: none;">
+                <h3>📊 Live Execution Logs</h3>
+                <div class="logs-output" id="logsOutput"></div>
+            </div>
+
+            <!-- Live Results Charts -->
+            <div class="live-results" id="liveResults" style="display: none;">
+                <h3>📊 Live Results</h3>
+                <div class="charts-container">
+                    <div class="chart-wrapper">
+                        <h4>Cost Comparison</h4>
+                        <div id="costChart" class="chart"></div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <h4>Execution Time</h4>
+                        <div id="timeChart" class="chart"></div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <h4>LLM Calls</h4>
+                        <div id="callsChart" class="chart"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Results -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-header">
+                    <h2>🎉 Demo Complete!</h2>
+                    <p>Live execution confirms the optimization benefits</p>
+                </div>
+
+                <!-- Dynamic Metrics -->
+                <div class="metrics-grid" id="metricsGrid">
+                    <!-- Metrics will be populated dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <h3>🚀 Ready to Optimize Your AI Costs?</h3>
+            <p>Install soplex-ai and start saving money today</p>
+            <div class="cta-buttons">
+                <a href="https://pypi.org/project/soplex-ai/" class="cta-btn primary">
+                    📦 pip install soplex-ai
+                </a>
+                <a href="https://github.com/pratikbhande/soplex" class="cta-btn secondary">
+                    💻 View on GitHub
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/demo.js') }}"></script>
+</body>
+</html>

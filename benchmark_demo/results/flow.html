@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Soplex SOP Visualization</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .mermaid {
+            text-align: center;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .info {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Soplex SOP Visualization</h1>
+        <p>Interactive flowchart showing SOP execution flow</p>
+    </div>
+
+    <div class="info">
+        <strong>Legend:</strong>
+        <span style="background-color: #cce5ff; padding: 2px 8px; margin: 0 5px;">🧠 LLM</span>
+        <span style="background-color: #d4edda; padding: 2px 8px; margin: 0 5px;">⚡ CODE</span>
+        <span style="background-color: #fff3cd; padding: 2px 8px; margin: 0 5px;">🔀 HYBRID</span>
+        <span style="background-color: #d4edda; padding: 2px 8px; margin: 0 5px;">🔀 BRANCH</span>
+        <span style="background-color: #f8d7da; padding: 2px 8px; margin: 0 5px;">🚨 ESCALATE</span>
+        <span style="background-color: #e2e3e5; padding: 2px 8px; margin: 0 5px;">🏁 END</span>
+    </div>
+
+    <div class="mermaid">
+---
+title: SOP: Enterprise KYC & AML Onboarding
+---
+
+flowchart TD
+
+    %% Node definitions
+    step_1["1. Greet the client representative warml..."]
+    step_2["2. Validate the registration number form..."]
+    step_3["3. Lookup the company details using comp..."]
+    step_4{"4. Check if the company status is \"Activ..."}
+    step_5["5. Extract and verify company directors ..."]
+    step_6["6. Ask the representative to identify th..."]
+    step_7["7. Verify the representative identity us..."]
+    step_8{"8. Check if the verified representative ..."}
+    step_9["9. Calculate the company's risk score ba..."]
+    step_10{"10. Check if the risk score is below the ..."}
+    step_11["11. Query aml_screening_db to screen comp..."]
+    step_12{"12. Check if any sanctions matches or hig..."}
+    step_13["13. Request and validate proof of busines..."]
+    step_14{"14. Verify the business address matches C..."}
+    step_15["15. Ask client to upload bank statements ..."]
+    step_16["16. Analyze uploaded bank statements for ..."]
+    step_17["17. Calculate final onboarding approval s..."]
+    step_18{"18. Check if the final approval score mee..."}
+    step_19["19. Generate welcome package with account..."]
+    step_20["20. Confirm successful KYC onboarding wit..."]
+    step_21(["21. Set up ongoing monitoring alerts for ..."])
+
+    %% Edge definitions
+    step_1 --> step_2
+    step_2 --> step_3
+    step_3 --> step_4
+    step_4 -->|YES| step_5
+    step_5 --> step_6
+    step_6 --> step_7
+    step_7 --> step_8
+    step_8 -->|YES| step_9
+    step_9 --> step_10
+    step_10 -->|YES| step_11
+    step_11 --> step_12
+    step_12 -->|NO| step_13
+    step_13 --> step_14
+    step_14 -->|YES| step_15
+    step_15 --> step_16
+    step_16 --> step_17
+    step_17 --> step_18
+    step_18 -->|YES| step_19
+    step_19 --> step_20
+    step_20 --> step_21
+
+    %% Style definitions
+    style step_1 fill:#cce5ff,stroke:#333,stroke-width:2px
+    style step_2 fill:#d4edda,stroke:#333,stroke-width:2px
+    style step_3 fill:#d4edda,stroke:#333,stroke-width:2px
+    style step_4 fill:#d4edda,stroke:#333,stroke-width:2px
+    style step_5 fill:#d4edda,stroke:#333,stroke-width:2px
+    style step_6 fill:#cce5ff,stroke:#333,stroke-width:2px
+    style step_7 fill:#d4edda,stroke:#333,stroke-width:2px
+    style step_8 fill:#d4edda,stroke:#333,stroke-width:2px
+    style step_9 fill:#d4edda,stroke:#333,stroke-width:2px
+    style step_10 fill:#d4edda,stroke:#333,stroke-width:2px
+    style step_11 fill:#d4edda,stroke:#333,stroke-width:2px
+    style step_12 fill:#d4edda,stroke:#333,stroke-width:2px
+    style step_13 fill:#d4edda,stroke:#333,stroke-width:2px
+    style step_14 fill:#d4edda,stroke:#333,stroke-width:2px
+    style step_15 fill:#cce5ff,stroke:#333,stroke-width:2px
+    style step_16 fill:#cce5ff,stroke:#333,stroke-width:2px
+    style step_17 fill:#d4edda,stroke:#333,stroke-width:2px
+    style step_18 fill:#d4edda,stroke:#333,stroke-width:2px
+    style step_19 fill:#fff3cd,stroke:#333,stroke-width:2px
+    style step_20 fill:#cce5ff,stroke:#333,stroke-width:2px
+    style step_21 fill:#e2e3e5,stroke:#333,stroke-width:2px
+    </div>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</body>
+</html>

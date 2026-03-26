@@ -1,0 +1,37 @@
+PROCEDURE: Enterprise KYC & AML Onboarding
+TRIGGER: New corporate client registration on financial platform
+TOOLS: companies_house_api, identity_verification, aml_screening_db, document_validation, risk_assessment
+
+1. Greet the client representative warmly and request the UK Company Registration Number
+2. Validate the registration number format using standard UK company number validation
+3. Lookup the company details using companies_house_api with the provided registration number
+4. Check if the company status is "Active" and incorporation date is over 6 months ago
+   - YES: Proceed to step 5
+   - NO: Inform client of eligibility requirements and escalate to manual_review
+5. Extract and verify company directors list from Companies House data
+6. Ask the representative to identify themselves and provide their role in the company
+7. Verify the representative identity using identity_verification service with document upload
+8. Check if the verified representative is listed as an active Director or Person with Significant Control
+   - YES: Proceed to step 9
+   - NO: Request authorized signatory documentation and escalate to compliance_review
+9. Calculate the company's risk score based on industry sector, annual turnover, and jurisdiction
+10. Check if the risk score is below the medium threshold (score < 70)
+    - YES: Proceed to step 11
+    - NO: Apply enhanced due diligence procedures and escalate to senior_compliance
+11. Query aml_screening_db to screen company, directors, and beneficial owners against UK PEPs and sanctions lists
+12. Check if any sanctions matches or high-risk PEP flags are detected
+    - YES: Immediately escalate to aml_specialist with detailed findings
+    - NO: Proceed to step 13
+13. Request and validate proof of business address using document_validation service
+14. Verify the business address matches Companies House registered office or filed address
+    - YES: Proceed to step 15
+    - NO: Request additional address verification documents and flag for address_verification_team
+15. Ask client to upload bank statements for the last 3 months for source of funds verification
+16. Analyze uploaded bank statements for unusual transaction patterns or high-risk jurisdictions
+17. Calculate final onboarding approval score combining all risk factors
+18. Check if the final approval score meets automatic approval threshold (score >= 85)
+    - YES: Proceed to step 19
+    - NO: Queue for manual underwriting review with compiled risk assessment
+19. Generate welcome package with account details and compliance documentation
+20. Confirm successful KYC onboarding with client and provide next steps for account activation
+21. Set up ongoing monitoring alerts for the client account and end the process

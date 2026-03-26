@@ -1,0 +1,33 @@
+PROCEDURE: Real-time Financial Fraud Detection & Response
+TRIGGER: Suspicious transaction alert flagged by monitoring system
+TOOLS: transaction_db, ml_fraud_model, customer_profile_api, external_intel_feeds, notification_service
+
+1. Retrieve the flagged transaction details from transaction_db using transaction_id
+2. Calculate the transaction risk score using ml_fraud_model with transaction features
+3. Check if the risk score exceeds the critical threshold (score > 90)
+   - YES: Immediately freeze the transaction and proceed to step 4
+   - NO: Proceed to step 7 for standard verification
+4. Automatically block the customer account to prevent further transactions
+5. Notify the fraud_team immediately via high-priority alert
+6. Send urgent SMS notification to customer about account security measures and skip to step 15
+7. Retrieve customer's historical transaction patterns from customer_profile_api
+8. Compare current transaction against customer's typical behavior patterns
+9. Check if transaction amount exceeds 300% of customer's average monthly transaction volume
+   - YES: Flag as high deviation and proceed to step 10
+   - NO: Proceed to step 12
+10. Cross-reference transaction details with external_intel_feeds for known fraud patterns
+11. Check if transaction matches any known fraud signatures or compromised merchant patterns
+    - YES: Escalate to fraud_analyst with detailed intelligence report
+    - NO: Proceed to step 12
+12. Verify if transaction originated from customer's registered device or known IP address
+13. Check if device fingerprint and location data match customer's historical patterns
+    - YES: Approve transaction with standard monitoring and proceed to step 16
+    - NO: Proceed to step 14
+14. Send real-time verification request to customer via SMS and mobile app push notification
+15. Wait for customer response within 10-minute window for transaction verification
+16. Check if customer confirmed the transaction authenticity within the time limit
+    - YES: Approve transaction and update customer verification patterns
+    - NO: Decline transaction and flag account for manual review
+17. Log all fraud detection activities and model performance metrics for compliance
+18. Update customer risk profile based on transaction outcome and verification response
+19. Generate fraud detection report for regulatory reporting requirements and end
